@@ -1,0 +1,7 @@
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.csproj.AssemblyReference.cache
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.AssemblyInfoInputs.cache
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.AssemblyInfo.cs
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.csproj.CoreCompileInputs.cache
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Intel\Downloads\Casey\Programming\C#\WhisperMe\WhisperMe\obj\Debug\net6.0\WhisperMe.MvcApplicationPartsAssemblyInfo.cache
