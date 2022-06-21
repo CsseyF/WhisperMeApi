@@ -14,6 +14,11 @@ namespace WhisperMe.Services
         }
         public async Task Register(UserDTO register)
         {
+
+            if(_userRepository.GetUser(register.UserName) != 0)
+            {
+                throw new Exception("already_existent_username");
+            }
             var newUser = new User()
             {
                 Guid = Guid.NewGuid(),

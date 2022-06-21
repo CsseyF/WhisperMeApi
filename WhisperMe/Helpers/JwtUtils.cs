@@ -19,7 +19,7 @@ namespace WhisperMe.Helpers
             _secretKey = configuration.GetSection("AppSettings: Token").Value;
         }
 
-        public string GenerateJwtToken(string user)
+        public string GenerateJwtToken(string username)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secretKey);
@@ -27,7 +27,7 @@ namespace WhisperMe.Helpers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Login", user)
+                    new Claim("Login", username)
                 }),
 
                 Expires = DateTime.UtcNow.AddDays(1),

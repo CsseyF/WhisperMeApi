@@ -19,6 +19,7 @@ builder.Services.AddDbContext<BaseContext>(options =>
 
 
 //Dependency Injection
+
 //Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IWhisperRepository, WhisperRepository>();
@@ -29,6 +30,7 @@ builder.Services.AddScoped<IWhisperService, WhisperService>();
 
 //Others
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 builder.Services.AddAutoMapper(typeof(Mappers));

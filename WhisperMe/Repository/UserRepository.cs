@@ -15,8 +15,10 @@ namespace WhisperMe.Repository
 
         public async Task Register(User newUser)
         {
+
             _userContext.User.Add(newUser);
             await _userContext.SaveChangesAsync();
+
         }
 
         public async Task<User> Login(string username, string password)
@@ -36,7 +38,15 @@ namespace WhisperMe.Repository
 
         public int GetUser(string username)
         {
-            return _userContext.User.FirstOrDefaultAsync(user => user.UserName == username).Result.UserId;
+            var user = _userContext.User.FirstOrDefaultAsync(user => user.UserName == username).Result;
+            if (user == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return user.UserId;
+            }
 
         }
 
