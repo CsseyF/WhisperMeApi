@@ -38,7 +38,7 @@ namespace WhisperMe.Repository
 
         public int GetUser(string username)
         {
-            var user = _userContext.User.FirstOrDefaultAsync(user => user.UserName == username).Result;
+            var user = _userContext.User.FirstOrDefault(user => user.UserName == username);
             if (user == null)
             {
                 return 0;

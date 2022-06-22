@@ -16,7 +16,7 @@ namespace WhisperMe.Helpers
 
         public JwtUtils(IConfiguration configuration)
         {
-            _secretKey = configuration.GetSection("AppSettings: Token").Value;
+            _secretKey = configuration.GetSection("Token").Value;
         }
 
         public string GenerateJwtToken(string username)

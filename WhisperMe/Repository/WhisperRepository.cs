@@ -37,7 +37,8 @@ namespace WhisperMe.Repository
         {
             var user = _context.User.FirstOrDefault(item => item.UserName == username);
 
-            return _context.Whisper.Where(item => item.UserId == user.UserId);
+            var list = _context.Whisper.Where(item => item.UserId == user.UserId).ToList();
+            return list;
         }
 
     }

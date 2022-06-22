@@ -1,4 +1,5 @@
-﻿using WhisperMe.Entities;
+﻿using System.IdentityModel.Tokens.Jwt;
+using WhisperMe.Entities;
 using WhisperMe.Repository.Interfaces;
 using WhisperMe.Services.Interfaces;
 using WhisperMe.ViewModels.Dtos;
@@ -50,7 +51,11 @@ namespace WhisperMe.Services
 
         public async Task<IEnumerable<Whisper>> ListWhispers(string jwt)
         {
-            return await _whisperRepository.ListWhispers(jwt);
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(jwt);
+            var claim = jwtSecurityToken.Claims.First().Value;
+
+            return await _whisperRepository.ListWhispers(claim);
         }
     }
 }

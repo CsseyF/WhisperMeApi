@@ -25,8 +25,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IWhisperRepository, WhisperRepository>();
 
 //Services
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IWhisperService, WhisperService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IWhisperService, WhisperService>();
 
 //Others
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();

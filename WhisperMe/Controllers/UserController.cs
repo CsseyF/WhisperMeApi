@@ -54,7 +54,7 @@ namespace WhisperMe.Controllers
             try
             {
                 await _userService.Login(request);
-                _httpContextAccessor.HttpContext = CreateToken(_httpContextAccessor.HttpContext, request);
+                CreateToken(request.UserName);
                 var jwt = _jwtUtils.GenerateJwtToken(request.UserName);
 
                 return NoContent();
@@ -72,22 +72,21 @@ namespace WhisperMe.Controllers
 
 
 
-        private HttpContext CreateToken(HttpContext context, UserDTO user)
+        private void CreateToken(string user)
         {
-            var jwt = _jwtUtils.GenerateJwtToken(user.UserName);
+            var jwt = _jwtUtils.GenerateJwtToken(user);
 
             var httpOnlyOptions = new CookieOptions
             {
                 HttpOnly = true
             };
 
-            context.Response.Cookies.Append(
+           HttpContext.Response.Cookies.Append(
                 "token",
                 jwt,
                 httpOnlyOptions
             );
 
-            return context;
         }
 
     }
