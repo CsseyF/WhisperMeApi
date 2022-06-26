@@ -25,6 +25,7 @@ namespace WhisperMe.Services
                     UserId = _userRepository.GetUser(whisperDto.ReceiverUsername),
                     Guid = Guid.NewGuid(),
                     Message = whisperDto.Message,
+                    ProfilePicture = whisperDto.ProfilePicture,
                     Color = whisperDto.Color,
                     CreatedDate = DateTime.Now
                 };
