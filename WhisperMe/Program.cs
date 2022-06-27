@@ -52,7 +52,8 @@ app.UseHttpsRedirection();
 
 app.UseCors(builder =>
 {
-    builder.AllowAnyOrigin();
+    builder.WithOrigins("vercel.app");
+    builder.SetIsOriginAllowedToAllowWildcardSubdomains();
     builder.AllowAnyMethod();
     builder.AllowAnyHeader();
     builder.Build();
