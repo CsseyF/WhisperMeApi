@@ -52,7 +52,7 @@ app.UseHttpsRedirection();
 
 app.UseCors(builder =>
 {
-    builder.WithOrigins("vercel.app");
+    builder.WithOrigins("https://vercel.app","https://whisperme.vercel.app","http://localhost");
     builder.SetIsOriginAllowedToAllowWildcardSubdomains();
     builder.AllowAnyMethod();
     builder.AllowAnyHeader();
