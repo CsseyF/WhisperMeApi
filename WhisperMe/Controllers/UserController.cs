@@ -78,7 +78,8 @@ namespace WhisperMe.Controllers
 
             var httpOnlyOptions = new CookieOptions
             {
-                HttpOnly = true
+                HttpOnly = true,
+                Domain = "vercel.app"
             };
 
            HttpContext.Response.Cookies.Append(

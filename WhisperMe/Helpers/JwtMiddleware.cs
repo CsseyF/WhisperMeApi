@@ -16,8 +16,6 @@ namespace WhisperMe.Helpers
         {
             try
             {
-
-
                 var endpoint = context.GetEndpoint();
                 if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() is object || context.Request.Method.ToLower().Equals("options") || context.Request.Path.ToString().Contains("swagger"))
                 {
@@ -35,7 +33,7 @@ namespace WhisperMe.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("EXCEPTION AARGH: " +ex.Message);
             }
         }
     }
