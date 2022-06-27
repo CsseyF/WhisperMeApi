@@ -15,7 +15,7 @@ namespace WhisperMe.Helpers
         public async Task Invoke(HttpContext context, IJwtUtils jwtUtils)
         {
             var endpoint = context.GetEndpoint();
-            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() is object || context.Request.Path.ToString().Contains("swagger"))
+            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() is object || context.Request.Method.ToLower().Equals("options") || context.Request.Path.ToString().Contains("swagger"))
             {
                 await _next(context); return;
             }

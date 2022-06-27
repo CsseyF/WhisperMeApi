@@ -7,11 +7,14 @@ using WhisperMe.Repository;
 using WhisperMe.Services.Interfaces;
 using WhisperMe.Services;
 
+
+string AllowEverything = "AllowEverything";
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddDbContext<BaseContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("Default"))
@@ -54,6 +57,8 @@ app.UseCors(builder =>
     builder.AllowAnyHeader();
     builder.Build();
 });
+
+app.UseCors(AllowEverything);
 
 app.UseAuthorization();
 app.UseAuthentication();
