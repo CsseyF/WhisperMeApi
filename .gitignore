@@ -365,6 +365,6 @@ FodyWeavers.xsd
 **/appsettings.json
 appsettings.json
 
-
+appSettings.Local.json
 
 *.zip
