@@ -69,6 +69,19 @@ namespace WhisperMe.Controllers
             }
         }
 
+        [HttpPost("Logout")]
+        public void Logout()
+        {
+            try
+            {
+                HttpContext.Response.Cookies.Delete("token");
+
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
 
 
