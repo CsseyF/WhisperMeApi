@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using WhisperMe.Entities;
+using WhisperMe.Helpers;
 using WhisperMe.Repository.Interfaces;
 using WhisperMe.Services.Interfaces;
 using WhisperMe.ViewModels.Dtos;
@@ -33,7 +34,7 @@ namespace WhisperMe.Services
             }
             else
             {
-                throw new Exception("empty_whisper");
+                HelperFunctions.ReturnErrorModel("empty_whisper");
             }
 
         }
@@ -46,7 +47,7 @@ namespace WhisperMe.Services
             }
             else
             {
-                throw new Exception("empty_whisper");
+                HelperFunctions.ReturnErrorModel("empty_whisper");
             }
         }
 
@@ -56,7 +57,14 @@ namespace WhisperMe.Services
             var jwtSecurityToken = handler.ReadJwtToken(jwt);
             var claim = jwtSecurityToken.Claims.First().Value;
 
-            return await _whisperRepository.ListWhispers(claim);
+            var list = await _whisperRepository.ListWhispers(claim);
+
+            if (!list.Any())
+            {
+                HelperFunctions.ReturnErrorModel("not_found_whispers");
+            }
+
+            return list;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WhisperMe.Database;
 using WhisperMe.Entities;
+using WhisperMe.Helpers;
 using WhisperMe.Repository.Interfaces;
 
 namespace WhisperMe.Repository
@@ -28,7 +29,7 @@ namespace WhisperMe.Repository
             }
             else
             {
-                throw new Exception("not_found_whisper");
+                HelperFunctions.ReturnErrorModel("not_found_whisper");
             }
 
         }

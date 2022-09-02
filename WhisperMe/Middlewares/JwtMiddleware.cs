@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using WhisperMe.Helpers;
 using WhisperMe.Services.Interfaces;
 
-namespace WhisperMe.Helpers
+namespace WhisperMe.Middlewares
 {
     public class JwtMiddleware
     {
@@ -33,7 +34,7 @@ namespace WhisperMe.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("EXCEPTION AARGH: " +ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

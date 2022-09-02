@@ -7,7 +7,6 @@ using WhisperMe.ViewModels.Responses;
 
 namespace WhisperMe.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
     public class UserController : Controller
@@ -16,8 +15,6 @@ namespace WhisperMe.Controllers
         private readonly IConfiguration _configuration;
         private readonly IJwtUtils _jwtUtils;
         private readonly IUserService _userService;
-
-
 
         public UserController(IUserService userService, IConfiguration configuration, IHttpContextAccessor htppContextAccessor)
         {
@@ -31,55 +28,27 @@ namespace WhisperMe.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] UserDTO request)
         {
-            try
-            {
-                await _userService.Register(request);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new ErrorResponse
-                {
-                    ErrorKey = ex.Message,
-                }
-                );
-            }
-
+            await _userService.Register(request);
+            return NoContent();
         }
 
         [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] UserDTO request)
         {
-            try
-            {
-                await _userService.Login(request);
-                CreateToken(request.UserName);
-                var jwt = _jwtUtils.GenerateJwtToken(request.UserName);
+            await _userService.Login(request);
+            CreateToken(request.UserName);
+            var jwt = _jwtUtils.GenerateJwtToken(request.UserName);
 
-                return NoContent();
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(new ErrorResponse
-                {
-                    ErrorKey = ex.Message,
-                }
-);
-            }
+            return NoContent();
         }
 
         [HttpPost("Logout")]
-        public void Logout()
+        public IActionResult Logout()
         {
-            try
-            {
-                HttpContext.Response.Cookies.Delete("token");
+            HttpContext.Response.Cookies.Delete("token");
+            return NoContent();
 
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
 
@@ -97,12 +66,11 @@ namespace WhisperMe.Controllers
                 SameSite = SameSiteMode.None
             };
 
-           HttpContext.Response.Cookies.Append(
-                "token",
-                jwt,
-                httpOnlyOptions
-            );
-
+            HttpContext.Response.Cookies.Append(
+                 "token",
+                 jwt,
+                 httpOnlyOptions
+             );
         }
 
     }

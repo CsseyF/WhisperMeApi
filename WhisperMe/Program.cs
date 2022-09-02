@@ -6,7 +6,7 @@ using WhisperMe.Repository.Interfaces;
 using WhisperMe.Repository;
 using WhisperMe.Services.Interfaces;
 using WhisperMe.Services;
-
+using WhisperMe.Middlewares;
 
 string AllowEverything = "AllowEverything";
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +40,7 @@ builder.Services.AddAutoMapper(typeof(Mappers));
 
 var app = builder.Build();
 
-
+app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseMiddleware<JwtMiddleware>();
 
 
